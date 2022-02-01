@@ -8,11 +8,11 @@ materials:
   media:
     # SAPCAR 7.22
     - name:         SAPCAR
-      archive:      SAPCAR_1010-70006178.EXE
-      checksum:     dff45f8df953ef3409dc560ea2689e53d46a14788d5d184834bb56544d342d7b
+      archive:      SAPCAR_1115-70006178.EXE
+      checksum:     765412436934362cc5497e3d659fbb78be91093a091c11ec4fbe84dfb415a0e5
       filename:     SAPCAR
       permissions:  '0755'
-      url:          https://softwaredownloads.sap.com/file/0020000002208852020
+      url:          https://softwaredownloads.sap.com/file/0020000000098642022
     # HANA Client v2.9
     - name:         SAP HANA CLIENT Version 2.9
       archive:      IMDB_CLIENT20_009_28-80002082.SAR
@@ -25,12 +25,12 @@ materials:
 
 # v2_00_059
     - name:         HANA Server
-      archive:      IMDB_SERVER20_059_0-80002031.SAR
-      checksum:     1543614e9ec66e146b713ecd26795e591c00f5e209bec1bab7ab135193bfe3bb
+      archive:      IMDB_SERVER20_059_1-80002031.SAR
+      checksum:     10ba64c4ebb65b57eddfb364a40a57431ef97e43b511db245d608834d8ecea9d
       extract:      true
       extractDir:   CD_HDBSERVER
       creates:      SIGNATURE.SMF
-      url:          https://softwaredownloads.sap.com/file/0020000001663222021
+      url:          https://softwaredownloads.sap.com/file/0020000000064362022
 
     - name:         SAP HANA AFL Rev 59 only for HANA 2.0 Rev 59
       archive:      IMDB_AFL20_059_0-80001894.SAR
