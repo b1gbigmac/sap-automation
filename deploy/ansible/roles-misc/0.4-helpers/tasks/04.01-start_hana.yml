@@ -4,8 +4,8 @@
 
 # /*---------------------------------------------------------------------------8
 # |                                                                            |
-# |     0  Last webmethod call successful
-# |     1  Last webmethod call failed, invalid parameter
+# |     0  Last web method call successful
+# |     1  Last web method call failed, invalid parameter
 # |     2  StartWait, StopWait, WaitforStarted, WaitforStopped, RestartServiceWait
 # |        timed out
 # |        CheckSystemCertificates detected warnings
@@ -15,27 +15,20 @@
 # |                                                                            |
 # +------------------------------------4--------------------------------------*/
 
-- name:                                Determine if HANA is running
+- name:                                "Determine if HANA is running on {{  ansible_hostname }}"
   become_user:                         "{{ db_sid | lower }}adm"
   become:                              true
   ansible.builtin.command:             "{{ sapcontrol_command }} -function GetProcessList"
-  register:                            get_process_list
   changed_when:                        false
   failed_when:                         false
 
-- name:                                Debug GetProcessList
-  ansible.builtin.debug:
-    var:                               get_process_list
-    verbosity:                         2
-
-- name:                                Ensure HANA is running
+- name:                                "Ensure HANA is running on {{ ansible_hostname }}"
   become_user:                         "{{ db_sid | lower }}adm"
   become:                              true
   ansible.builtin.command:             "{{ sapcontrol_command }} -function StartWait {{ hana_stop_start_timeout_in_seconds }} {{ hana_stop_start_delay_in_seconds }}"
   changed_when:                        false
-  when:                                get_process_list.rc != 3
 
-- name:                                Check if HANA is running
+- name:                                "Validate HANA is running  on {{  ansible_hostname }}"
   become_user:                         "{{ db_sid | lower }}adm"
   become:                              true
   ansible.builtin.command:             "{{ sapcontrol_command }} -function GetProcessList"
@@ -44,4 +37,3 @@
   failed_when:                         hana_running.rc != 3
 
 ...
-
